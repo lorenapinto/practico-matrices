@@ -1,0 +1,66 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#define MAX 20
+
+using namespace std;
+
+void cargar_caracol(int M[MAX][MAX],int orden);
+
+void main()
+{	
+	int orden, M[MAX][MAX];
+	do{
+	cout<<"ingrese el orden de su matriz"<<endl;
+	cin>>orden;
+	}while((orden<=0)||(orden>MAX));
+
+	cargar_caracol(M,orden);
+	getch();
+}
+
+
+void cargar_caracol(int M[MAX][MAX],int orden)
+{
+	int i,cont,d;
+	d=1;
+	cont=0;
+
+	while(cont<(orden/2))
+	{
+		for(i=cont;i<(orden-cont);i++)
+		{
+			M[cont][i]=d;
+			cout<<"M["<<cont<<"]["<<i<<"]="<<M[cont][i]<<endl;
+			d++;
+		}
+		for(i=cont+1;i<(orden-cont);i++)
+		{
+			M[i][orden-1-cont]=d;
+			cout<<"M["<<i<<"]["<<orden-1-cont<<"]="<<M[i][orden-1-cont]<<endl;
+			d++;
+		}
+
+		for(i=(orden-2-cont);i>=cont;i--)
+		{
+			M[orden-1-cont][i]=d;
+			cout<<"M["<<orden-1-cont<<"]["<<i<<"]="<<M[orden-1-cont][i]<<endl;
+			d++;
+		}
+
+		for(i=(orden-2-cont);i>cont;i--)
+		{
+			M[i][cont]=d;
+			cout<<"M["<<i<<"]["<<cont<<"]="<<M[i][cont]<<endl;
+			d++;
+		}
+		cont++;
+	}
+
+	if(orden%2!=0)
+	{
+		M[orden/2][orden/2]=orden*orden;
+		cout<<"M["<<orden/2<<"]["<<orden/2<<"]="<<M[orden/2][orden/2]<<endl;
+	}
+
+}
