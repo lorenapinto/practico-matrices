@@ -13,7 +13,7 @@ void main()
 	int fil,col,A[MAX][MAX];
 	// nota: se obtendra los cuadrados de cada numero, pero si es que este numero obtenido
 	//tiene 2 cifras, estas se invertiran.
-	cout<<"Se creara una matriz 3x4 en la que se obtengan los cuadrados de cada numero."<<endl;
+	cout<<"Se creara una matriz 3x3 en la que se obtengan los cuadrados de cada numero."<<endl;
 	fil=3;
 	col=3;
 	cout<<endl;
@@ -33,15 +33,15 @@ void cargar_matriz (int A[MAX][MAX], int fil, int col)
 		for (int j=0; j<col; j++)
 		{
 			cociente=(d*d)/10;
-			if (cociente==1)
+			if (cociente==0)
 			{
 				A[i][j]=d*d;
 				d++;
 			}
 			else 
 			{
-				residuo=cociente%10;
-				nuevonum= (residuo*10)+cociente;
+				residuo=(d*d)%10;
+				nuevonum= ((residuo*10)+cociente);
 				A[i][j]=nuevonum;
 				d++;
 			}
